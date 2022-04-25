@@ -19,6 +19,9 @@ images.
 6) Visualize the results -  Lastly, the results will be given as output, where the detected object (in our case, it`s ball), will have a mask and bounding box over it,
 with names of the class (in our case, its the ball ), and accuracy percentage written.
 
+
+
+
 For second problem, it says that we have to obtain the trajectory of the centroid of the object at all times, which means we have to track the trajectory of the object.
 Cases may be that the object might behind an obstacle, or  there may multiple similar objects. SO, to resolve this issue we will be using Kalman filter. Kalman filter 
 can be used to estimate the path of an object, when they can`t be measured directly.  The steps to perform Kalman Filter are - 
