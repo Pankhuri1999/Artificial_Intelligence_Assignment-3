@@ -1,6 +1,7 @@
 # Artificial_Intelligence_Assignment-3
 
 For Question -1 , explanation has been given the "Answer" file 
+Googel COlab Link - https://colab.research.google.com/drive/1m07_i3wywLVK2qLUU_iv9djBChiSeoms?usp=sharing
 
 For Question -2 , explanation has been given the "Explanation of Code" file 
 For Question -2 , code has been given as  https://github.com/Pankhuri1999/Artificial_Intelligence_Assignment-3/blob/main/Question-2/Assignment3_Ques2ipynb.ipynb
