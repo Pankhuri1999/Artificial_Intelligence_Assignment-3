@@ -48,15 +48,6 @@ class KalmanFilter:
     process_noise = 0
     measurement_noise = 0
 
-    """
-    def predict(self, coordX, coordY):
-        ''' This function estimates the position of the object'''
-        measured = np.array([[np.float32(coordX)], [np.float32(coordY)]])
-        self.kf.correct(measured)
-        predicted = self.kf.predict()
-        x, y = int(predicted[0]), int(predicted[1])
-        return x, y
-    """
     def predict(self):
         self.X = np.dot(self.A,self.X) + np.dot(self.B,self.U) + self.process_noise
         self.P = np.dot(np.dot(self.A,self.P),self.A.T) + self.Q
@@ -82,27 +73,4 @@ class KalmanFilter:
         self.P = (np.eye(K.shape[0]) - np.dot(np.dot(K,self.H),self.P))
         return self.X[0:2]
 
-    def predict1(self):
-        self.X = np.dot(self.A,self.X) + np.dot(self.B,self.U) + self.process_noise
-        self.P = np.dot(np.dot(self.A,self.P),self.A.T) + self.Q
-        return self.X1[0:2]
-
-    def update1(self,Xm):
-        Xm = np.array(Xm).reshape(2,1)
-        
-        # calculate kalaman gain
-        # K = P * H'* inv(H*P*H'+R)
-        denominator = np.dot(self.H,np.dot(self.P,self.H.T)) + self.R
-        K = np.dot(np.dot(self.P, self.H.T), np.linalg.inv(denominator)) #shape: (4,2)
-        
-
-        # measurments
-        C = np.eye(Xm.shape[0])
-        Xm = np.dot(C,Xm) + self.measurement_noise
-
-        # update the predicted_state to get final prediction of iteration and process_cov_matrix
-        self.X1 = self.X1 + np.dot(K,(Xm - np.dot(self.H,self.X1)))
-
-        #update process cov matrix
-        self.P = (np.eye(K.shape[0]) - np.dot(np.dot(K,self.H),self.P))
-        return self.X1[0:2]
+  
