@@ -1,0 +1,41 @@
+The first problem here talks about the object detection challenge. For this challenge, I have used Mask R-CNN model, which is based on deep convolutional neural 
+network. The model will detect both the bounding box and mask for each detected object. The steps to do object detection through to detect the ball are as follows - 
+
+1) Preparation of model configuration parameters - In the beginning of the Mask R-CNN model, we need to sepcify some parameters. These parameters include non-maximum 
+suppression (NMS), intersection over Union(IoU), image size, number of ROIs per image etc. The file config.py in one of the folders of this model has some default
+values for the parameters. So, some of the parameters need to overriden.
+
+2) Build the Mask R-CNN model architecture - To start building the architecture of the model,  we have used the class names MaskRCNN which is in mrcnn.model. We will
+usethe model as  {model = mrcnn.model.MaskRCNN(mode="inference", config=SimpleConfig(), model_dir=os.getcwd())}.
+
+3) Load the model weights. - In this step,we will use load_weights() method to load the wieghts in the model. We will be using mask_rcnn_coco.h5 file for loading down 
+the weights.
+
+4) Read an input video - Once the model and weights are loaded, we will start reading the input video through python library cv2.
+
+5) Detect objects in the video - Each image in the video will be captured separately. The detect function will be called which is going to detect the ball from the
+images.
+
+6) Visualize the results -  Lastly, the results will be given as output, where the detected object (in our case, it`s ball), will have a mask and bounding box over it,
+with names of the class (in our case, its the ball ), and accuracy percentage written.
+
+For second problem, it says that we have to obtain the trajectory of the centroid of the object at all times, which means we have to track the trajectory of the object.
+Cases may be that the object might behind an obstacle, or  there may multiple similar objects. SO, to resolve this issue we will be using Kalman filter. Kalman filter 
+can be used to estimate the path of an object, when they can`t be measured directly.  The steps to perform Kalman Filter are - 
+
+1) Initialize system state -  Initializing the starting position of the object . When the first measurement comes, the only information known about the object is the
+position at that point in time. When we get the ouptut for the first measurement, the only information that we have is the position of the object at that time.The
+system state is then set to input position after the first estimate. 
+
+2) Reinitializing system state  - The system state is reinitialized again because for computing the next position we need a second position measurement. Velocity is 
+esimated after approximation. The updates system will have measurement of second position and calculated velocity. The accuracy of second measurement`s position and 
+approximated velocity will be equal to updates system state error covariance.
+ 
+3) Prediction of System State Estimate - When we receive the measurement for the next step, the system state is moved forward to align with the measurement. The 
+alignment is done so that measurement and state estimate can be combined. 
+
+4) Computing the Kalman Gain - For every new measurment, Kalman Gain will be computed to determine to what extent the input measurement will influence the system 
+state estimate. It helps in recognizing in what way to weight its current estimate and new measurement information to form an optimal estimate.
+
+5) Estimation of System State and System State Error Covariance matrix - Kalman Gain is used to computer the system state and error covariance  matrix  for the time 
+of input measurement. Once the Kalman Gain estimated, it is further used to weight the measurements appopriately.
