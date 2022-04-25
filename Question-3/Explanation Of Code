@@ -1,0 +1,8 @@
+The steps that I followed are - 
+
+
+1) In the first step, which is that of object detection, I did it through color recognition method. I detected the the object by assigning yellow colour numpy array
+
+2) In the second step, I created the code for Kalman filter
+
+3) In third steps, I created the code which computes mesaured, calculated and actal distance
