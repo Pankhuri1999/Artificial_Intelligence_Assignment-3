@@ -1,0 +1,33 @@
+EXPLANATION OF CODE - To do the object detection I have used Mask R-CNN model. Explanation of code is as follows -
+
+1) For loading and saving models and weights, I first installed 2.10.0 version of h5py
+
+2) For functioning of the model, downgradation of tensorflow was necessary, so I downgraded the tensorflow model to version 1.x
+
+3) I then git cloned mask_RCNN
+
+4) I then overrided some parameters in model.py file.
+
+5) I then installed rest of the libraries required for the code
+
+6) Then I got cloned the COCO dataset from https://github.com/cocodataset/cocoapi.git
+
+7) I then imported all the other neccesary libraries ( matplotlib, numpy etc. ) along with other python files, (mrcc.model etc). I provided a path for the root directory. And then loaded the trained model file - mask_rcnn_coco.h5.
+
+8) I then imported the video on which we have to perform ball object detection
+
+9) I saved the video in the next cell
+
+10) I then wrote the function for putting a mask on detected object, putting accuracy and scores around bounding box etc.
+
+11) Then I write down the function to divide the video into individual images and do the object detection on individual images.
+
+12) I then saved the images in the roort directory
+
+13) Then, I created the function to create the video which will combine all those frames, where object has been detected.
+
+14) Then, I saved the videos in the root directory
+
+15) Then I downloaded the video
+
+16) I then repested the same steps for the second video
